@@ -1,0 +1,94 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="middle__bar middle__bar--has-tab">
+    <div id="filterctrl" class="filter__form search__filters--wrap">
+        <div class="row">
+            <div class="col-lg-3 col-md-4">
+                <div class="form-group">
+                    <label>Role:</label>
+                    <select id="DrpRole" name="DrpRole" class="selectpicker selectpicker__clear--multi w-100 filter-control" mode="Role" title="Select" option-type="select" option-op="InClause" data-live-search="true">
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="form-group">
+                    <label class="w-100 ipad__hide mob__hide">&nbsp;</label>
+                    <button id="btnPermissionclear" type="button" class="btn btn-sm btn-secondary mr-1">Clear All</button>
+                    <button id="permissonSearch" class="btn btn btn-primary btn-sm filtersbar__close">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-none" id="PermissionDt">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive permissions-table">
+                    <table class="table table-striped fixed-table w-100 " id="permissiontbl">
+                        <thead>
+                            <tr>
+                                <th scope="col">Module</th>
+                                <th scope="col">Page</th>
+                                <th scope="col">
+                                    <div class="checkbox-fade fade-in-primary">
+                                        <label class="checkbox__wrap">
+                                            <input type="checkbox" id="selectallview" class="chkAll" data="chkView"
+                                                   value="">
+                                            <span class="checkmark"></span>
+                                            <span class="check__text">View</span>
+                                        </label>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="checkbox-fade fade-in-primary">
+                                        <label class="checkbox__wrap">
+                                            <input type="checkbox" id="selectalladd" class="chkAll" data="chkAdd"
+                                                   value="">
+                                            <span class="checkmark"></span>
+                                            <span class="check__text">Add</span>
+                                        </label>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="checkbox-fade fade-in-primary">
+                                        <label class="checkbox__wrap">
+                                            <input type="checkbox" id="selectalledit" class="chkAll" data="chkEdit"
+                                                   value="">
+                                            <span class="checkmark"></span>
+                                            <span class="check__text">Edit</span>
+                                        </label>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="checkbox-fade fade-in-primary">
+                                        <label class="checkbox__wrap">
+                                            <input type="checkbox" id="selectalldelete" class="chkAll" data="chkDelete"
+                                                   value="">
+                                            <span class="checkmark"></span>
+                                            <span class="check__text">Delete</span>
+                                        </label>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="Permissiontbl">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button class="btn btn-secondary" id="btnsavepermission" type="button">
+                        Save
+                        Permission
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/js/pages/Permission/Permission.js" asp-append-version="true"></script>
+}

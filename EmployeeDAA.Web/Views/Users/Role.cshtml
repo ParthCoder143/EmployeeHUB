@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section filters{
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control filter-control" colName="Name" option-type="input" option-op="Contains" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>Role Type</label>
+        <select id="ddlRoleType" mode="RoleType" colName="RoleType" option-type="select" multiple="multiple" option-op="InClause" title="Select RoleType" class="selectpicker w-100 filter-control" data-live-search="true">
+        </select>
+    </div>
+}
+<partial name="~/Views/Shared/_MasterNavigation.cshtml" />
+
+<div class="middle__bar middle__bar--has-tab">
+    <partial name="~/Views/Shared/_ManageTopDataFilter.cshtml" />
+
+    <table id="tblRole" class="table table-bordered table-striped checkbox__on--hover tasks w-100" role="presentation">
+    </table>
+</div>
+<div class="modal fade" tabindex="-1" id="popmodel" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content" id="popmodelcontent">
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/js/pages/Users/Role.js" asp-append-version="true"></script>
+}

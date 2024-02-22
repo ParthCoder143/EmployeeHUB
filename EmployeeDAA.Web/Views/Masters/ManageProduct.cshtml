@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Manage Document Type";
+    Layout = null;
+}
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">Manage Product</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form method="post" apiurl="Products" id="frmAddEditPopup" role="form" enctype="multipart/form-data">
+    <div class="modal-body">
+        <input type="hidden" id="Id" Name="Id" value="0" />
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label> Category Name <span class="text-danger">*</span></label>
+                    <select id="CategoryId" name="CategoryId" mode="Categories"
+                            title="Select Category" class="selectpicker w-100" data-live-search="true"
+                            required></select>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Product Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="ProductName" name="ProductName" autocomplete="off"
+                           title="Enter Document Type" required />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Price <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="Price" name="Price" autocomplete="off"
+                           title="Enter Price" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Image</label><br />
+                    <button type="button" class="btn btn-danger btn-sm remove-preview" id="OpenImgUpload">Choose Image</button>
+                    <input type="file" id="Imgupload" class="form-control d-none" />
+                    <input type="hidden" id="Photo" Name="Photo" /><br />
+                    <span>Upload any png,jpeg,jpg file.</span><br />
+                    <span>Max 5mb file allowed.</span>
+                </div>
+            </div>
+            <div class="col-6 d-none PrvPhoto">
+                <div class="form-group">
+                    <img id="PrvPhoto" src="#" width="100" height="100" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>
+                        Sort Order<i class="fas fa-info-circle ml-1" data-toggle="tooltip" data-placement="right"
+                                     title="Only Number Allow"></i>
+                    </label>
+                    <input type="text" class="form-control numberOnly" id="SortOrder" name="SortOrder" maxlength="3" />
+                </div>
+            </div>
+        </div>
+
+        <div class="d-inline-block align-checklistgrpitems-center justify-content-center">
+            <label>Status </label>
+            <label class="switch small-switch mb-0">
+                <input type="checkbox" id="IsActive" name="IsActive" class="btn-grid-isactive" value="1" checked="checked">
+                <span class="switch-slider"></span>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="btnSaveDocType">Save changes</button>
+    </div>
+</form>

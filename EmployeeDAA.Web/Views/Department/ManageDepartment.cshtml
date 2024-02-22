@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Manage Department";
+    Layout = null;
+}
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">@ViewData["Title"]</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form method="post" apiurl="Department" id="frmDocumentClass" role="form">
+    <div class="modal-body">
+        <input type="hidden" id="Id" Name="Id" value="0" />
+        <div class="form-group">
+            <label>Employee Id <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="EmployeeId" name="EmployeeId" required />
+        </div>
+        <div class="form-group">
+            <label>Department Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control " id="DepartmentName" name="DepartmentName" required />
+        </div>
+        <div class="form-group">
+            <label>Department Code <span class="text-danger">*</span></label>
+            <input type="number" class="form-control numberOnly" id="DepartmentCode" name="DepartmentCode" required />
+        </div>
+        <div class="d-inline-block align-checklistgrpitems-center justify-content-center">
+            <label>Status </label>
+            <label class="switch small-switch mb-0">
+                <input type="checkbox" id="IsActive" name="IsActive" class="btn-grid-isactive" value="1" checked="checked">
+                <span class="switch-slider"></span>
+            </label>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+</form>

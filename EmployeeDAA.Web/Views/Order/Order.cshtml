@@ -1,0 +1,183 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <div class="col-md-7 col-lg-8 mx-auto" style="margin-top:100px">
+        <h4 class="mb-3 beautiful-underline">Customer Details</h4>
+        @*        <form method="post" apiurl="Order" id="frmAddEditPopup" role="form" enctype="multipart/form-data">
+        *@
+        <form method="post" action="https://localhost:7062/api/Order" id="frmAddEditPopup" role="form" enctype="multipart/form-data">
+
+            <div class="modal-body">
+                <input type="hidden" id="Id" name="Id" value="0" />
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="CustomerId">Customer Id</label>
+                            <input type="text" class="form-control" id="CustomerId" name="CustomerId" title="Enter Customer Id" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Customer Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="CustomerName" name="CustomerName" autocomplete="off"
+                                   title="Customer Name" required />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Mobile No<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control numberOnly" id="MobileNo" name="MobileNo" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Email Address <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" autocomplete="off" title="Enter Email." required />
+                        </div>
+                        <div class="form-group">
+                            <label>Unit No</label>
+                            <input type="text" class="form-control" id="UnitNo" name="UnitNo" autocomplete="off" />
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Block</label>
+                            <input type="text" class="form-control" id="Block" name="Block" autocomplete="off" />
+                        </div>
+                        <div class="form-group">
+                            <label>Street</label>
+                            <input type="text" class="form-control" id="Street" name="Street" autocomplete="off" />
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Building Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="BuildingName" name="BuildingName" autocomplete="off" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Postal Code</label>
+                            <input type="number" class="form-control" id="PostalCode" name="PostalCode" autocomplete="off" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        @*  <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-secondary">Close</button>
+        <button type="submit" id="ss" class="btn btn-primary">Save changes</button>
+        </div> *@
+
+
+        <button type="button" class="btn btn-primary" id="btnAddProduct">Add Product</button>
+        <div class="modal fade" tabindex="-1" id="popmodel" role="dialog" aria-labelledby="myLargeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content" id="popmodelcontent" style="width: 700px;">
+                </div>
+            </div>
+        </div>
+
+@*<div class="container my-5">
+    <div class="col-md-7 col-lg-8 mx-auto">
+        <h4 class="mb-3 beautiful-underline">Order Cart</h4>
+        <form method="post" apiurl="Order" id="frmAddEditPopup" role="form" enctype="multipart/form-data">
+
+
+            <div class="modal-body">
+                <input type="hidden" id="Id" name="Id" value="0" />
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Product<span class="text-danger">*</span></label>
+                            <select id="ProductId" name="ProductId" mode="Products" class="selectpicker selectpicker__clear--multi w-100 filter-control"
+                                    colName="ProductId" option-type="select" multiple="multiple"
+                                    title="Select Products" class="selectpicker w-100" data-live-search="true" required>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Category Name <span class="text-danger">*</span></label>
+                            <select id="CategoryId" name="CategoryId" mode="Categories"
+                                    title="Select Category" class="selectpicker w-100" data-live-search="true" required>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Quantity <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="Quantity" name="Quantity" autocomplete="off" required />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="UnitPrice">Unit Price</label>
+                            <input type="text" class="form-control" id="UnitPrice" name="UnitPrice" autocomplete="off" disabled />
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="TotalPrice">Total Price</label>
+                            <input type="text" class="form-control" id="TotalPrice" name="TotalPrice" autocomplete="off" disabled />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="close" class="btn btn-secondary">Close</button>
+                <button type="submit" id="ss" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+*@
+
+
+
+
+@section scripts{
+    <script src="~/js/pages/Order/order.js" asp-append-version="true"></script>
+    <script src="~/js/pages/Order/manageorder.js" asp-append-version="true"></script>
+
+    @*<script>
+        $(document).ready(function () {
+            $('#close').on('click', function () {
+                window.location.href = '/Order/index';
+            });
+
+            $('#ss').submit(function (event) {
+                event.preventDefault();
+
+                $.ajax({
+                    url: 'https://localhost:7062/api/Order',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        console.log('Personal Details API success:', data);
+                    },
+                    error: function (error) {
+                        console.error('Personal Details API error:', error);
+                    }
+                });
+
+            });
+        });
+    </script>*@
+}

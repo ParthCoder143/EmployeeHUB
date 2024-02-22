@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Manage Employee";
+    Layout = null;
+}
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">@ViewData["Title"]</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form method="post" apiurl="Employees" id="frmAddEditPopup" role="form">
+    <div class="modal-body">
+        <input type="hidden" id="Id" Name="Id" value="0" />
+        <div class="form-group">
+            <label>Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="Name" name="Name" required />
+        </div>
+        <div class="form-group">
+            <label>Address<span class="text-danger">*</span></label>
+            <input type="text" class="form-control " id="Address" name="Address" required />
+        </div>
+        <div class="form-group">
+            <label>Email Id <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="EmailId" name="EmailId" required />
+        </div>
+        <div class="form-group">
+            <label>Phone No <span class="text-danger">*</span></label>
+            <input type="number" class="form-control numberOnly" id="PhoneNo" name="PhoneNo" required />
+        </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+</form>

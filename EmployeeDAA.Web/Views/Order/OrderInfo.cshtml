@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section filters{
+    <div class="form-group">
+        <label>Customer Id</label>
+        <input type="text" class="form-control filter-control" colName="CustomerId" option-type="input" option-op="Contains" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>PostalCode</label>
+        <input type="number" class="form-control filter-control" colName="PostalCode" option-type="input" option-op="Contains" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control filter-control" colName="EmailAddress" option-type="input" option-op="Contains" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>Mobile</label>
+        <input type="text" class="form-control filter-control" colName="MobileNo" option-type="input" option-op="Contains" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>UserName</label>
+        <input type="text" class="form-control filter-control" colName="UserName" option-type="input" option-op="Contains" maxlength="50">
+    </div>
+}
+<partial name="~/Views/Shared/_MasterNavigation.cshtml" />
+<div class="middle__bar middle__bar--has-tab">
+    <partial name="~/Views/Shared/_ManageTopDataFilter.cshtml" />
+    <button type="button" class="btn btn-secondary btn-sm hide btn-add-order">Add Order</button>
+
+    <table id="tblOrderInfo" class="table table-bordered table-striped checkbox__on--hover tasks w-100" role="presentation">
+    </table>
+</div>
+<div class="modal fade" tabindex="-1" id="popmodel" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content" id="popmodelcontent">
+        </div>
+    </div>
+</div>
+@section scripts{
+
+
+    <script src="~/js/pages/Order/OrderInfo.js" asp-append-version="true"></script>
+}

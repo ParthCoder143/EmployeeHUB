@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Manage User";
+    Layout = null;
+}
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">@ViewData["Title"]</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form method="post" apiurl="User" id="frmAddEditPopup" role="form" enctype="multipart/form-data">
+    <div class="modal-body">
+        <input type="hidden" id="Id" Name="Id" value="0" />
+@*        <input type="hidden" id="TempIsAdLogin" Name="TempIsAdLogin" />
+*@        @* <input type="hidden" id="Password" Name="Password"  /> *@
+        <input type="hidden" id="IsActive" name="IsActive" class="d-none" value="true">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>First Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="FirstName" name="FirstName" autocomplete="off" title="Enter First Name." required />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Last Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="LastName" name="LastName" autocomplete="off" title="Enter Last Name." required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Email <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="Email" name="Email" autocomplete="off" title="Enter Email." required />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Mobile</label>
+                    <input type="text" class="form-control numberOnly" id="Mobile" name="Mobile" autocomplete="off" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>User Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="UserName" name="UserName" autocomplete="off" title="Enter User Name." required />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Role <span class="text-danger">*</span></label>
+                    <select id="RoleId" name="RoleId" mode="Role" title="Select Role" class="selectpicker w-100" data-live-search="true" required></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Image</label><br />
+                    <button type="button" class="btn btn-danger btn-sm remove-preview" id="OpenImgUpload">Choose Image</button>
+                    <input type="file" id="Imgupload" class="form-control d-none" />
+                    <input type="hidden" id="Photo" Name="Photo" /><br />
+                    <span>Upload any png,jpeg,jpg file.</span><br />
+                    <span>Max 5mb file allowed.</span>
+                </div>
+            </div>
+            <div class="col-6 d-none PrvPhoto">
+                <div class="form-group">
+                    <img id="PrvPhoto" src="#" width="100" height="100" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 " id="divPassword">
+                <div class="form-group">
+                    <label>Password <span class="text-danger" id="adnoncomppass">*</span></label>
+                    <input type="password" class="form-control" id="Password" name="Password" title="Enter Password." autocomplete="off" />
+                    <span toggle="#Password" class="fa fa-fw field__icon toggle__password fa-eye"></span>
+                </div>
+            </div>
+            <div class="col-6 " id="divConfirmPassword">
+                <div class="form-group">
+                    <label>Confirm Password<span class="text-danger" id="adnoncompconfirmpass">*</span></label>
+                    <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" title="Enter ConfirmPassword." autocomplete="off" />
+                    <span toggle="#ConfirmPassword" class="fa fa-fw field__icon toggle__password fa-eye"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="saveuser" class="btn btn-primary">Save changes</button>
+    </div>
+
+</form>

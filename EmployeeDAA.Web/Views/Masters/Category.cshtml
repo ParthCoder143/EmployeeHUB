@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section filters{
+    <div class="form-group">
+        <label>Category Name</label>
+        <input type="text" class="form-control filter-control" colName="CategoryName" option-type="input" option-op="Contains" maxlength="50">
+        <span class="field__clear d-none"><em class="fas fa-times"></em></span>
+    </div>
+    <div class="form-group">
+        <label>SortOrder</label>
+        <input type="text" class="form-control numberOnly filter-control" colName="SortOrder" option-type="input" option-op="Equals" maxlength="3">
+        <span class="field__clear d-none"><em class="fas fa-times"></em></span>
+    </div>
+}
+<partial name="~/Views/Shared/_MasterNavigation.cshtml" />
+
+<div class="middle__bar middle__bar--has-tab">
+    <partial name="~/Views/Shared/_ManageTopDataFilter.cshtml" />
+
+    <table id="tblEmployee" class="table table-bordered table-striped checkbox__on--hover tasks w-100" role="presentation">
+    </table>
+</div>
+<div class="modal fade" tabindex="-1" id="popmodel" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content" id="popmodelcontent">
+        </div>
+    </div>
+</div>
+@section scripts{
+
+    <script src="~/js/pages/category/categorymaster.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EmployeeHUB.Web</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <environment include="Development">
+        <link href="~/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/bootstrap-select.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/bootstrap-datetimepicker.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/bootstrap-side-modals.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/datatables.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/responsive.dataTables.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/fixedColumns.dataTables.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/all.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/sweetalert2.css" asp-append-version="true" />
+        <script src="~/js/jquery-3.6.0.min.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <link href="~/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/bootstrap-select.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/bootstrap-datetimepicker.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/bootstrap-side-modals.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/datatables.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/responsive.dataTables.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/fixedColumns.dataTables.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/all.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/sweetalert2.css" asp-append-version="true" />
+        <script src="~/js/jquery-3.6.0.min.js" asp-append-version="true"></script>
+    </environment>
+</head>
+<body>
+    <div class="loader-main hide-block">
+        <div id="loading"></div>
+    </div>
+    <header>
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">EmployeeHUB.Web</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                <div class="nav-wrap">
+                    <nav class="greedy-nav d-none">
+                        <div class="mobile_menu_view"></div>
+                        <ul class="visible-links">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Employee" asp-action="index">Employee</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Department" asp-action="index">Department</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Category" asp-action="index">Category</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Product" asp-action="index">Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="index">User</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Role" asp-action="index">Role</a>
+                            </li>
+@*                             <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="OrderInfo" asp-action="index">Order Registration</a>
+                            </li>
+ *@                            
+                            <li class="nav-item">
+                                <a pagecode='Permission' href="~/Permission/Permission"><i class="fas fa-question"></i> Roles & Permissions</a>
+                            </li>
+                        </ul>
+
+                    </nav>
+                </div>
+
+            </div>
+            <div class="header__right">
+
+                <div class="userdrop__box">
+                    <span class="userdrop__icon"></span>
+
+                    <div class="btn-group">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="GlbUserName"></span></button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="~/User/Profile"><i class="fas fa-user"></i> Profile</a>
+                            <a class="dropdown-item" href="~/User/ChangePassword"><i class="fas fa-key"></i> Change Password</a>
+                            <a class="dropdown-item NoBind" id="Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <div id="filtersbar" class="filtersbar">
+        <div class="filtersheader">
+            <span><i class="fas fa-filter"></i> <strong>Filters</strong></span>
+            <a class="filtersbar__close"><em class="fas fa-times"></em></a>
+        </div>
+        <div id="divfilter" class="filtersbody">
+            <div id="filterctrl">
+                @RenderSection("filters", required: false)
+            </div>
+            <div class="form-group text-right">
+                <button id="btnfilterclear" type="button" class="btn btn-sm btn-secondary mr-1">Clear All</button>
+                <button id="btnFilter" class="btn btn btn-primary btn-sm filtersbar__close">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - EmployeeHUB.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/js/popper.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-select.min.js" asp-append-version="true"></script>
+        <script src="~/js/moment.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-datetimepicker.min.js" asp-append-version="true"></script>
+        <script src="~/js/datatables.min.js" asp-append-version="true"></script>
+        <script src="~/js/dataTables.responsive.min.js" asp-append-version="true"></script>
+        <script src="~/js/dataTables.fixedColumns.min.js" asp-append-version="true"></script>
+        <script src="~/js/timepicki.js" asp-append-version="true"></script>
+        <script src="~/js/Common/custom.js" asp-append-version="true"></script>
+        <script src="~/js/Common/ConfigURL.js" asp-append-version="true"></script>
+        <script src="~/js/Common/RequestResponse.js" asp-append-version="true"></script>
+        <script src="~/js/Controls/DataTableFilter.js" asp-append-version="true"></script>
+        <script src="~/js/Controls/DataTableConfig.js" asp-append-version="true"></script>
+        <script src="~/js/Controls/DropDownConfig.js" asp-append-version="true"></script>
+        <script src="~/js/tag-input.js" asp-append-version="true"></script>
+        <script src="~/js/Common/Common.js" asp-append-version="true"></script>
+        <script src="~/js/Pages/layout.js" asp-append-version="true"></script>
+        <script src="~/js/Pages/comments.js" asp-append-version="true"></script>
+        <script src="~/js/sweetalert2.all.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+
+
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/popper.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-select.min.js" asp-append-version="true"></script>
+        <script src="~/js/moment.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-datetimepicker.min.js" asp-append-version="true"></script>
+        <script src="~/js/datatables.min.js" asp-append-version="true"></script>
+        <script src="~/js/dataTables.responsive.min.js" asp-append-version="true"></script>
+        <script src="~/js/dataTables.fixedColumns.min.js" asp-append-version="true"></script>
+        <script src="~/js/timepicki.js" asp-append-version="true"></script>
+        <script src="~/js/Common/custom.js" asp-append-version="true"></script>
+        <script src="~/js/Common/ConfigProd.js" asp-append-version="true"></script>
+        <script src="~/js/Common/RequestResponse.js" asp-append-version="true"></script>
+        <script src="~/js/Controls/DataTableFilter.js" asp-append-version="true"></script>
+        <script src="~/js/Controls/DataTableConfig.js" asp-append-version="true"></script>
+        <script src="~/js/Controls/DropDownConfig.js" asp-append-version="true"></script>
+        <script src="~/js/tag-input.js" asp-append-version="true"></script>
+        <script src="~/js/Common/Common.js" asp-append-version="true"></script>
+        <script src="~/js/Pages/layout.js" asp-append-version="true"></script>
+        <script src="~/js/Pages/comments.js" asp-append-version="true"></script>
+        <script src="~/js/sweetalert2.all.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+    </environment>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
